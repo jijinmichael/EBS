@@ -23,7 +23,7 @@ To create an EBS volume and attach it to an EC2 instance, you can follow these s
 
 In this case my Ec2 Instance is created on ap-south-1b. So I'm creating the additional volume on the same region. Please see below.
 
-![image](https://github.com/jijinmichael/EBS/assets/134680540/584fe32d-4120-414c-8007-8815e241dbe6)
+![image](https://github.com/jijinmichael/EBS/assets/134680540/fe234cd3-d666-4baa-a018-e235e0a7495e)
 
 Here I'm showing a scenario that a client want an additional volume and mount his/her web doc root /var/www/html to the additional volume.
 
