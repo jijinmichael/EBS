@@ -137,7 +137,9 @@ xvda      202:0    0    8G  0 disk
 xvdf      202:80   0    1G  0 disk 
 └─xvdf1   202:81   0 1023M  0 part /var/www/html
 ```
-Now we can see that the newly added 1G volume is mounthed to /var/www/html. 
+Now we can see that the newly added 1G volume is mounted to /var/www/html. 
+
+## 
 
 
 
