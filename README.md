@@ -48,7 +48,7 @@ xvda      202:0    0   8G  0 disk
 └─xvda128 259:1    0  10M  0 part 
 xvdf      202:80   0   1G  0 disk 
 ```
-In the above snippet you can see an additional disk named xvdf with 1G.
+In the above snippet you can see an additional disk named xvdf with 1G. Now we need to format and mount the additional volume.
 
 Here I'm showing a scenario that a client want an additional volume and mount his/her web doc root /var/www/html to the additional volume.
 
