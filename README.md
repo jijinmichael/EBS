@@ -84,6 +84,14 @@ Command (m for help): w
 The partition table has been altered.
 Calling ioctl() to re-read partition table.
 Syncing disks.
+[ec2-user@ip-172-31-7-15 ~]$ lsblk 
+NAME      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0    8G  0 disk 
+├─xvda1   202:1    0    8G  0 part /
+├─xvda127 259:0    0    1M  0 part 
+└─xvda128 259:1    0   10M  0 part 
+xvdf      202:80   0    1G  0 disk 
+└─xvdf1   202:81   0 1023M  0 part
 [ec2-user@ip-172-31-7-15 ~]$ sudo mkfs -t ext4 /dev/xvdf1
 mke2fs 1.46.5 (30-Dec-2021)
 Creating filesystem with 261888 4k blocks and 65536 inodes
@@ -96,6 +104,40 @@ Writing inode tables: done
 Creating journal (4096 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
+Now mounting the additional volume to /var/www/html.
+```
+[ec2-user@ip-172-31-7-15 ~]$ sudo mount /dev/xvdf1 /mnt/
+[ec2-user@ip-172-31-7-15 ~]$ lsblk 
+NAME      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0    8G  0 disk 
+├─xvda1   202:1    0    8G  0 part /
+├─xvda127 259:0    0    1M  0 part 
+└─xvda128 259:1    0   10M  0 part 
+xvdf      202:80   0    1G  0 disk 
+└─xvdf1   202:81   0 1023M  0 part /mnt
+[ec2-user@ip-172-31-7-15 ~]$ sudo cp -ra /var/www/html/* /mnt/
+[ec2-user@ip-172-31-7-15 ~]$ sudo umount /mnt 
+[ec2-user@ip-172-31-7-15 ~]$ sudo systemctl stop httpd.service
+```
+Then add the entry in fstab for persistence.
+```
+[ec2-user@ip-172-31-7-15 ~]$ sudo vim /etc/fstab
+```
+![image](https://github.com/jijinmichael/EBS/assets/134680540/c2753e72-1c59-492a-8a9e-d2a1fbf18bf7)
+
+```
+[ec2-user@ip-172-31-7-15 ~]$ sudo mount -a
+[ec2-user@ip-172-31-7-15 ~]$ sudo systemctl start httpd.service
+[ec2-user@ip-172-31-7-15 ~]$ lsblk 
+NAME      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0    8G  0 disk 
+├─xvda1   202:1    0    8G  0 part /
+├─xvda127 259:0    0    1M  0 part 
+└─xvda128 259:1    0   10M  0 part /boot/efi
+xvdf      202:80   0    1G  0 disk 
+└─xvdf1   202:81   0 1023M  0 part /var/www/html
+```
+Now we can see that the newly added 1G volume is mounthed to /var/www/html. 
 
 
 
