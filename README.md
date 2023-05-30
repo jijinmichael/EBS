@@ -36,6 +36,20 @@ Now let us see how to attach this volume to an Instance which we already have.
 
 ![image](https://github.com/jijinmichael/EBS/assets/134680540/6eb0c729-c176-457d-9957-09bff7452eaf)
 
+Once attached, the volume will appear as a new block device on the EC2 instance.
+
+To check this Log in to the EC2 instance, and use commands like lsblk.
+```
+[ec2-user@ip-172-31-7-15 ~]$ lsblk 
+NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0   8G  0 disk 
+├─xvda1   202:1    0   8G  0 part /
+├─xvda127 259:0    0   1M  0 part 
+└─xvda128 259:1    0  10M  0 part 
+xvdf      202:80   0   1G  0 disk 
+```
+In the above snippet you can see an additional disk named xvdf with 1G.
+
 Here I'm showing a scenario that a client want an additional volume and mount his/her web doc root /var/www/html to the additional volume.
 
 <p align="center">
