@@ -204,6 +204,10 @@ xvdf      202:80   0   2G  0 disk
 
 ## How to increase the root EBS volume
 
+Here we are going to see how we can increase the default root volume 8G to 10G.
+- Open the AWS Management Console and navigate to the EC2 service.
+- Click on the Instance, then under the storage section note down the Instance root volume ID.
+![image](https://github.com/jijinmichael/EBS/assets/134680540/e5677eee-a669-460e-987b-80440a4e72a4)
 
 
 
