@@ -29,7 +29,12 @@ For better understanding I have given the name tag as add-vol for the new volume
 
 Now let us see how to attach this volume to an Instance which we already have.
 
+- Once the volume is created, go back to the "Volumes" page and select the newly created volume.
+- Click on the "Actions" dropdown menu and choose "Attach Volume."
+- In the "Attach Volume" dialog, select the EC2 instance you want to attach the volume to from the "Instance" dropdown menu.
+- Click on the "Attach" button to attach the volume to the instance.
 
+![image](https://github.com/jijinmichael/EBS/assets/134680540/6eb0c729-c176-457d-9957-09bff7452eaf)
 
 Here I'm showing a scenario that a client want an additional volume and mount his/her web doc root /var/www/html to the additional volume.
 
