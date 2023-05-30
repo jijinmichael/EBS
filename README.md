@@ -1,3 +1,1 @@
-## EBS
-Amazon Elastic Block Store
----
+## Amazon Elastic Block Store
