@@ -200,7 +200,7 @@ xvda      202:0    0   8G  0 disk
 xvdf      202:80   0   2G  0 disk 
 └─xvdf1   202:81   0   2G  0 part /var/www/html
 ```
-
+**Please note that once a volume is expanded, we can re-expand the same volume after 6 hrs **
 
 
 
