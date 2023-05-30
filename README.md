@@ -139,7 +139,19 @@ xvdf      202:80   0    1G  0 disk
 ```
 Now we can see that the newly added 1G volume is mounted to /var/www/html. 
 
-## 
+## How to increase the additional volume size
+
+Here we are going to see how we can increase the attached 1G additional volume in the above session to 2G.
+
+To increase the size of an existing EBS volume, you can follow these steps:
+- Open the AWS Management Console and navigate to the EC2 service.
+- Click on "Volumes" in the left-hand menu under "Elastic Block Store."
+- Select the EBS volume that you want to increase in size.
+- Click on the "Actions" dropdown menu and choose "Modify Volume."
+![image](https://github.com/jijinmichael/EBS/assets/134680540/96d017f7-cae5-4fb8-ab4d-1190bb6f10b3)
+- In the "Modify Volume" dialog, update the size of the volume to the desired new size. **Note that you can only increase the size, not decrease it.**
+![image](https://github.com/jijinmichael/EBS/assets/134680540/004a87b5-6596-45be-bbff-b9811f8b8d77)
+
 
 
 
