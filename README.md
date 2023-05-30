@@ -17,7 +17,6 @@ To create an EBS volume and attach it to an EC2 instance, you can follow these s
 - Click on "Volumes" in the left-hand menu under "Elastic Block Store."
 - Click on the "Create Volume" button.
 - In the "Create Volume" dialog, specify the desired settings for the volume:
-- 
-- Availability Zone: Choose the same Availability Zone as the EC2 instance you want to attach the volume to.
+--Availability Zone: Choose the same Availability Zone as the EC2 instance you want to attach the volume to.
 Volume Type: Select the appropriate volume type based on your performance and cost requirements.
 Size: Specify the size of the volume in gigabytes (GB).
