@@ -207,11 +207,67 @@ xvdf      202:80   0   2G  0 disk
 Here we are going to see how we can increase the default root volume 8G to 10G.
 - Open the AWS Management Console and navigate to the EC2 service.
 - Click on the Instance, then under the storage section note down the Instance root volume ID.
+
 ![image](https://github.com/jijinmichael/EBS/assets/134680540/e5677eee-a669-460e-987b-80440a4e72a4)
+
 - Click on the "Actions" dropdown menu and choose "Modify Volume."
+
 ![image](https://github.com/jijinmichael/EBS/assets/134680540/5f769519-bfcd-4b52-956d-ce2448b67066)
+
 - Make size to 10G and Click on modify.
+
 ![image](https://github.com/jijinmichael/EBS/assets/134680540/073ea22b-9d99-4f7c-a7af-15c9d67599ae)
+
+- Once the modification is complete, the root EBS volume will be expanded to the new size.
+
+After increasing the volume size, you may need to perform additional steps to resize the file system and make use of the additional space. Let us see how do that. Log in to the instance.
+```
+[ec2-user@ip-172-31-37-121 ~]$ lsblk 
+NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0  10G  0 disk 
+├─xvda1   202:1    0   8G  0 part /
+├─xvda127 259:0    0   1M  0 part 
+└─xvda128 259:1    0  10M  0 part /boot/efi
+xvdb      202:16   0   2G  0 disk 
+└─xvdb1   202:17   0   2G  0 part /var/www/html
+```
+As we can see that the root volume is expanded to 10G. But it is not reflected to the partition. So please follow the below steps to reflect it.
+```
+[ec2-user@ip-172-31-37-121 ~]$ sudo growpart /dev/xvda 1
+CHANGED: partition=1 start=24576 old: size=16752607 end=16777183 new: size=20946911 end=20971487
+[ec2-user@ip-172-31-37-121 ~]$ lsblk -f
+NAME      FSTYPE FSVER LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINTS
+xvda                                                                             
+├─xvda1   xfs          /     55a1aebd-f196-4f84-8afe-075f5d1dda63    6.4G    19% /
+├─xvda127                                                                        
+└─xvda128 vfat   FAT16       0383-1543                               8.7M    13% /boot/efi
+xvdb                                                                             
+└─xvdb1   ext4   1.0         d92f9ac0-e910-4527-ae81-b25425d7a45c    1.8G     0% /var/www/html
+```
+Here we can see that the file system for the root volume is xfs. So we can't use resize2fs to expand this volume like before.
+Here we are using xfs_growfs to resize the root volume.
+```
+[ec2-user@ip-172-31-37-121 ~]$ sudo xfs_growfs -d /
+meta-data=/dev/xvda1             isize=512    agcount=2, agsize=1047040 blks
+         =                       sectsz=4096  attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=0
+         =                       reflink=1    bigtime=1 inobtcount=1
+data     =                       bsize=4096   blocks=2094075, imaxpct=25
+         =                       sunit=128    swidth=128 blks
+naming   =version 2              bsize=16384  ascii-ci=0, ftype=1
+log      =internal log           bsize=4096   blocks=16384, version=2
+         =                       sectsz=4096  sunit=4 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+data blocks changed from 2094075 to 2618363
+[ec2-user@ip-172-31-37-121 ~]$ lsblk 
+NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0  10G  0 disk 
+├─xvda1   202:1    0  10G  0 part /
+├─xvda127 259:0    0   1M  0 part 
+└─xvda128 259:1    0  10M  0 part /boot/efi
+xvdb      202:16   0   2G  0 disk 
+└─xvdb1   202:17   0   2G  0 part /var/www/html
+```
 
 
 
