@@ -150,8 +150,8 @@ To increase the size of an existing EBS volume, you can follow these steps:
 - Click on the "Actions" dropdown menu and choose "Modify Volume."
 ![image](https://github.com/jijinmichael/EBS/assets/134680540/96d017f7-cae5-4fb8-ab4d-1190bb6f10b3)
 - In the "Modify Volume" dialog, update the size of the volume to the desired new size. **Note that you can only increase the size, not decrease it.**
+![image](https://github.com/jijinmichael/EBS/assets/134680540/c039da5a-a78b-4ad2-94d9-788464806001)
 
-![image](https://github.com/jijinmichael/EBS/assets/134680540/004a87b5-6596-45be-bbff-b9811f8b8d77)
 
 
 
