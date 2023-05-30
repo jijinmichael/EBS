@@ -53,7 +53,7 @@ In the above snippet you can see an additional disk named xvdf with 1G. Now we n
 Here I'm showing a scenario that a client want an additional volume and mount his/her web doc root /var/www/html to the additional volume.
 
 <p align="center">
-  <img src="https://github.com/jijinmichael/EBS/assets/134680540/f390a02d-ea48-492c-a9cc-7aa4febbd41c"></p>
+  <img src="https://github.com/jijinmichael/EBS/assets/134680540/523e044c-8a3d-46c3-bb35-a3d1196a0659"></p>
   
 Partition the attached disk and make the file system to ext4.
 
