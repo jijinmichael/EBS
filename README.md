@@ -173,7 +173,7 @@ xvda      202:0    0    8G  0 disk
 xvdf      202:80   0    2G  0 disk 
 └─xvdf1   202:81   0 1023M  0 part /var/www/html
 ```
-In the above snippet you can see the out before modifying the additional volume and after modifying. Here the addition of the additional 1G is reflected to the disk but not to the mount point. In oder to do this please follow the steps below.
+In the above snippet you can see the output of the disk before modifying the additional volume and after modifying. Here the addition of the additional 1G is reflected to the disk but not to the mount point. In oder to do this please follow the steps below.
 ```
 [ec2-user@ip-172-31-7-15 ~]$ sudo growpart /dev/xvdf 1
 CHANGED: partition=1 start=2048 old: size=2095104 end=2097152 new: size=4192223 end=4194271
