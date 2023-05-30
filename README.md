@@ -23,7 +23,7 @@ To create an EBS volume and attach it to an EC2 instance, you can follow these s
 
 In this case my Ec2 Instance is created on ap-south-1b. So I'm creating the additional volume on the same region. Please see below.
 
-![image](https://github.com/jijinmichael/EBS/assets/134680540/fe234cd3-d666-4baa-a018-e235e0a7495e)
+![image](https://github.com/jijinmichael/EBS/assets/134680540/5b67fc54-d25f-4303-9d3a-570cc8a83a57)
 
 For better understanding I have given the name tag as add-vol for the new volume.
 
@@ -34,7 +34,7 @@ Now let us see how to attach this volume to an Instance which we already have.
 - In the "Attach Volume" dialog, select the EC2 instance you want to attach the volume to from the "Instance" dropdown menu.
 - Click on the "Attach" button to attach the volume to the instance.
 
-![image](https://github.com/jijinmichael/EBS/assets/134680540/6eb0c729-c176-457d-9957-09bff7452eaf)
+![image](https://github.com/jijinmichael/EBS/assets/134680540/95c22174-d8ed-40e1-bc88-4489bd0a076a)
 
 Once attached, the volume will appear as a new block device on the EC2 instance.
 
@@ -123,7 +123,7 @@ Then add the entry in fstab for persistence.
 ```
 [ec2-user@ip-172-31-7-15 ~]$ sudo vim /etc/fstab
 ```
-![image](https://github.com/jijinmichael/EBS/assets/134680540/c2753e72-1c59-492a-8a9e-d2a1fbf18bf7)
+![image](https://github.com/jijinmichael/EBS/assets/134680540/5731ac62-c968-4618-a011-e5049e223eff)
 
 ```
 [ec2-user@ip-172-31-7-15 ~]$ sudo mount -a
@@ -148,9 +148,9 @@ To increase the size of an existing EBS volume, you can follow these steps:
 - Click on "Volumes" in the left-hand menu under "Elastic Block Store."
 - Select the EBS volume that you want to increase in size.
 - Click on the "Actions" dropdown menu and choose "Modify Volume."
-![image](https://github.com/jijinmichael/EBS/assets/134680540/96d017f7-cae5-4fb8-ab4d-1190bb6f10b3)
+![image](https://github.com/jijinmichael/EBS/assets/134680540/335db8ba-1fd9-47a8-a6a8-2fb7f7f32641)
 - In the "Modify Volume" dialog, update the size of the volume to the desired new size. **Note that you can only increase the size, not decrease it.**
-![image](https://github.com/jijinmichael/EBS/assets/134680540/c039da5a-a78b-4ad2-94d9-788464806001)
+![image](https://github.com/jijinmichael/EBS/assets/134680540/b36ca85f-b6dd-46e3-80df-8c9c4deb8526)
 - Click on the "Modify" button to apply the size increase.
 - Once the modification is complete, the EBS volume will be expanded to the new size.
 
