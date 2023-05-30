@@ -202,6 +202,8 @@ xvdf      202:80   0   2G  0 disk
 ```
 **Please note that once a volume is expanded, we can re-expand the same volume after 6 hrs**
 
+## How to increase the root EBS volume
+
 
 
 
