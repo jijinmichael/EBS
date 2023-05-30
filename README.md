@@ -9,4 +9,5 @@ Let's see some key characteristics and features of EBS:
 - **Elasticity and Scalability:** With EBS, you can easily scale the size of your storage volumes as your needs change. You can increase or decrease the volume size without impacting the running EC2 instances.
 - **Availability and Redundancy:** EBS volumes are replicated within an Availability Zone (AZ) to provide high availability and protection against hardware failures. You can also enable multi-AZ replication to replicate volumes across multiple AZs for further resilience.
 
+## Creating a Volume and attaching to an Instance.
 
