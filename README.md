@@ -151,7 +151,55 @@ To increase the size of an existing EBS volume, you can follow these steps:
 ![image](https://github.com/jijinmichael/EBS/assets/134680540/96d017f7-cae5-4fb8-ab4d-1190bb6f10b3)
 - In the "Modify Volume" dialog, update the size of the volume to the desired new size. **Note that you can only increase the size, not decrease it.**
 ![image](https://github.com/jijinmichael/EBS/assets/134680540/c039da5a-a78b-4ad2-94d9-788464806001)
+- Click on the "Modify" button to apply the size increase.
+- Once the modification is complete, the EBS volume will be expanded to the new size.
 
+After increasing the volume size, you may need to perform additional steps to resize the file system and make use of the additional space. Let us see how do that. Log in to the instance.
+```
+[ec2-user@ip-172-31-7-15 ~]$ lsblk 
+NAME      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0    8G  0 disk 
+├─xvda1   202:1    0    8G  0 part /
+├─xvda127 259:0    0    1M  0 part 
+└─xvda128 259:1    0   10M  0 part /boot/efi
+xvdf      202:80   0    1G  0 disk 
+└─xvdf1   202:81   0 1023M  0 part /var/www/html
+[ec2-user@ip-172-31-7-15 ~]$ lsblk 
+NAME      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0    8G  0 disk 
+├─xvda1   202:1    0    8G  0 part /
+├─xvda127 259:0    0    1M  0 part 
+└─xvda128 259:1    0   10M  0 part /boot/efi
+xvdf      202:80   0    2G  0 disk 
+└─xvdf1   202:81   0 1023M  0 part /var/www/html
+```
+In the above snippet you can see the out before modifying the additional volume and after modifying. Here the addition of the additional 1G is reflected to the disk but not to the mount point. In oder to do this please follow the steps below.
+```
+[ec2-user@ip-172-31-7-15 ~]$ sudo growpart /dev/xvdf 1
+CHANGED: partition=1 start=2048 old: size=2095104 end=2097152 new: size=4192223 end=4194271
+[ec2-user@ip-172-31-7-15 ~]$ sudo lsblk -f
+NAME      FSTYPE FSVER LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINTS
+xvda                                                                             
+├─xvda1   xfs          /     55a1aebd-f196-4f84-8afe-075f5d1dda63    6.4G    19% /
+├─xvda127                                                                        
+└─xvda128 vfat   FAT16       0383-1543                               8.7M    13% /boot/efi
+xvdf                                                                             
+└─xvdf1   ext4   1.0         5b3099c9-63b0-43c2-a747-ffc1c423e9cd  921.2M     0% /var/www/html
+[ec2-user@ip-172-31-7-15 ~]$ sudo resize2fs /dev/xvdf1 
+resize2fs 1.46.5 (30-Dec-2021)
+Filesystem at /dev/xvdf1 is mounted on /var/www/html; on-line resizing required
+old_desc_blocks = 1, new_desc_blocks = 1
+The filesystem on /dev/xvdf1 is now 524027 (4k) blocks long.
+
+[ec2-user@ip-172-31-7-15 ~]$ lsblk 
+NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0   8G  0 disk 
+├─xvda1   202:1    0   8G  0 part /
+├─xvda127 259:0    0   1M  0 part 
+└─xvda128 259:1    0  10M  0 part /boot/efi
+xvdf      202:80   0   2G  0 disk 
+└─xvdf1   202:81   0   2G  0 part /var/www/html
+```
 
 
 
