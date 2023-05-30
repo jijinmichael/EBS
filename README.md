@@ -208,6 +208,11 @@ Here we are going to see how we can increase the default root volume 8G to 10G.
 - Open the AWS Management Console and navigate to the EC2 service.
 - Click on the Instance, then under the storage section note down the Instance root volume ID.
 ![image](https://github.com/jijinmichael/EBS/assets/134680540/e5677eee-a669-460e-987b-80440a4e72a4)
+- Click on the "Actions" dropdown menu and choose "Modify Volume."
+![image](https://github.com/jijinmichael/EBS/assets/134680540/5f769519-bfcd-4b52-956d-ce2448b67066)
+- Make size to 10G and Click on modify.
+![image](https://github.com/jijinmichael/EBS/assets/134680540/073ea22b-9d99-4f7c-a7af-15c9d67599ae)
+
 
 
 
