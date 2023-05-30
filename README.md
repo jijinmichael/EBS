@@ -21,7 +21,9 @@ To create an EBS volume and attach it to an EC2 instance, you can follow these s
   - **Volume Type:** Select the appropriate volume type based on your performance and cost requirements.
   - **Size:** Specify the size of the volume in gigabytes (GB).
 
-![image](https://github.com/jijinmichael/EBS/assets/134680540/ae96d729-0c5f-41d2-89fd-0acebac07713)
+In this case my Ec2 Instance is created on ap-south-1b. So I'm creating the additional volume on the same region. Please see below.
+
+![image](https://github.com/jijinmichael/EBS/assets/134680540/584fe32d-4120-414c-8007-8815e241dbe6)
 
 Here I'm showing a scenario that a client want an additional volume and mount his/her web doc root /var/www/html to the additional volume.
 
