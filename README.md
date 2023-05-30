@@ -25,10 +25,17 @@ In this case my Ec2 Instance is created on ap-south-1b. So I'm creating the addi
 
 ![image](https://github.com/jijinmichael/EBS/assets/134680540/fe234cd3-d666-4baa-a018-e235e0a7495e)
 
+For better understanding I have given the name tag as add-vol for the new volume.
+
+Now let us see how to attach this volume to an Instance which we already have.
+
+
+
 Here I'm showing a scenario that a client want an additional volume and mount his/her web doc root /var/www/html to the additional volume.
 
 <p align="center">
   <img src="https://github.com/jijinmichael/EBS/assets/134680540/f390a02d-ea48-492c-a9cc-7aa4febbd41c"></p>
-  
+
+
 
 
